@@ -1,24 +1,27 @@
 package org.example;
 
-import com.sun.org.apache.bcel.internal.generic.ARETURN;
 import org.apache.commons.lang3.StringUtils;
 
 public class ParseStringForTime {
 
 
-   public int parseStringForTime (String s) {
+   public int[] parseStringForTime (char[] chars) {
 
-      for (int i = 0; i < s.length(); i++) {
+      for (int i = 0; i < chars.length; i++) {
 
-         int indexCommaBeforeTime = StringUtils.ordinalIndexOf(s, ",", 3);
-         int indexCommaAfterTime = StringUtils.ordinalIndexOf(s, ",", 4);
+         int indexCommaBeforeTime = StringUtils.ordinalIndexOf(chars.toString(), ",", 3);
+         int indexCommaAfterTime = StringUtils.ordinalIndexOf(chars.toString(), ",", 4);
 
-         String substringMinutes = s.substring(indexCommaBeforeTime + 1, indexCommaBeforeTime + 3).trim();
-         String substringSeconds = s.substring(indexCommaBeforeTime + 4, indexCommaAfterTime).trim();
+         String substringMinutes = chars.toString().substring(indexCommaBeforeTime + 1, indexCommaBeforeTime + 3).trim();
+         String substringSeconds = chars.toString().substring(indexCommaBeforeTime + 4, indexCommaAfterTime).trim();
 
          int minutes = Integer.parseInt(substringMinutes);
          int seconds = Integer.parseInt(substringSeconds);
+
+         int[] time = new int[2];
+         time[0] = minutes;
+         time[1] = seconds;
       }
-      return parseStringForTime(s);
+      return parseStringForTime(chars);
    }
 }
