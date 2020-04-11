@@ -14,7 +14,7 @@ public class App {
       String content2 = "1,Jimmy Smiles,UK,29:15,xxoox,xooxo,xxxxo";
       String content3 = "27,Piotr Smitzer,CZ,30:10,xxxxx,xxxxx,xxxxx";
 
-      writeToFile writeToFile = new writeToFile();
+      WriteToFile writeToFile = new WriteToFile();
 
       writeToFile.writeInFile(content);
       writeToFile.writeInFile(content2);
@@ -22,7 +22,7 @@ public class App {
 
       ReadFromFile a = new ReadFromFile("F:\\results.txt");
 
-      List<String> strings = a.fileRead(new File("F:\\results.txt"));
+      ArrayList<String> strings = a.fileRead(new File("F:\\results.txt"));
 
       for (String s : strings
       ) {
@@ -33,7 +33,7 @@ public class App {
 
          ParseStringForTime sp = new ParseStringForTime();
 
-         int[] timeResult = sp.intparseStringForTime(ps.parseStringForResults(a.fileRead(new File("F:\\results.txt"))));
+         int[] timeResult = sp.intparseStringForTime(strings);
 
          TimeCalculator t = new TimeCalculator();
 

@@ -2,7 +2,7 @@ package org.example;
 
 import java.io.*;
 
-public class writeToFile {
+public class WriteToFile {
 
    public void writeInFile (String s) throws IOException {
       File fout = new File("F:\\results.txt");
