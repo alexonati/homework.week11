@@ -12,27 +12,21 @@ public class ParseStringForResults {
    private String s;
 
 
-   public char[] parseStringForResults (ArrayList arrayList) {
+   public String[] parseStringForResults (ArrayList arrayList) {
 
       for (int i = 0; i < arrayList.size(); i++) {
          String s = arrayList.get(i).toString();
 
-         int indexCommaAfterTime = ordinalIndexOf(s, ",", 4);
          int indexCommaAfterFirstTry = ordinalIndexOf(s, ",", 5);
          int indexCommaAfterSecondTry = ordinalIndexOf(s, ",", 6);
 
-         int a = s.substring(indexCommaAfterTime + 1, indexCommaAfterFirstTry).toCharArray().length +
-                 s.substring(indexCommaAfterFirstTry + 1, indexCommaAfterSecondTry).toCharArray().length +
-                 s.substring(indexCommaAfterSecondTry + 5).toCharArray().length;
+         String[] firstResult = s.split(String.valueOf(ordinalIndexOf(s, ",", 4) + 1), indexCommaAfterFirstTry);
+         String[] secondResult = s.split(String.valueOf(ordinalIndexOf(s, ",", 5) + 1), indexCommaAfterSecondTry);
+         String[] thirdResult = s.split(String.valueOf(ordinalIndexOf(s, ",", 6) + 5));
 
-         char[] charArrayWithResults1 = new char[a];
-
-
-         charArrayWithResults1 = ArrayUtils.addAll(s.substring(indexCommaAfterTime + 1, indexCommaAfterFirstTry).toCharArray(),
-                 s.substring(indexCommaAfterFirstTry + 1, indexCommaAfterSecondTry).toCharArray());
-
-         charArrayWithResults1 = ArrayUtils.addAll(charArrayWithResults1, s.substring(indexCommaAfterSecondTry + 5).toCharArray());
-
+         String[] resultsOneAndTwo = ArrayUtils.addAll(firstResult, secondResult);
+         String[] resultsAll = ArrayUtils.addAll(resultsOneAndTwo, thirdResult);
+         return resultsAll;
       }
       return parseStringForResults(arrayList);
    }

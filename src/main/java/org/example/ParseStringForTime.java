@@ -5,23 +5,24 @@ import org.apache.commons.lang3.StringUtils;
 public class ParseStringForTime {
 
 
-   public int[] parseStringForTime (char[] chars) {
+   public int[] intparseStringForTime (String[] strings) {
 
-      for (int i = 0; i < chars.length; i++) {
+      for (int i = 0; i < strings.length; i++) {
 
-         int indexCommaBeforeTime = StringUtils.ordinalIndexOf(chars.toString(), ",", 3);
-         int indexCommaAfterTime = StringUtils.ordinalIndexOf(chars.toString(), ",", 4);
+         int indexCommaBeforeTime = StringUtils.ordinalIndexOf(strings.toString(), ",", 3);
+         int indexCommaAfterTime = StringUtils.ordinalIndexOf(strings.toString(), ",", 4);
 
-         String substringMinutes = chars.toString().substring(indexCommaBeforeTime + 1, indexCommaBeforeTime + 3).trim();
-         String substringSeconds = chars.toString().substring(indexCommaBeforeTime + 4, indexCommaAfterTime).trim();
+         String[] substringMinutes = strings.toString().split(String.valueOf(indexCommaBeforeTime + 1), indexCommaBeforeTime + 3);
+         String[] substringSeconds = strings.toString().split(String.valueOf(indexCommaBeforeTime + 4), indexCommaAfterTime);
 
-         int minutes = Integer.parseInt(substringMinutes);
-         int seconds = Integer.parseInt(substringSeconds);
+         int minutes = Integer.parseInt(String.valueOf(substringMinutes));
+         int seconds = Integer.parseInt(String.valueOf(substringSeconds));
 
-         int[] time = new int[2];
-         time[0] = minutes;
-         time[1] = seconds;
+         int[] timeResult = new int[2];
+         timeResult[0] = minutes;
+         timeResult[1] = seconds;
+         return timeResult;
       }
-      return parseStringForTime(chars);
+      return intparseStringForTime(strings);
    }
 }

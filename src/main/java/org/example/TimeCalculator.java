@@ -9,7 +9,7 @@ public class TimeCalculator {
    private int secondsRemaining;
 
 
-   public int[] calculateFinalTime (char[] chars, int minutes, int seconds) {
+   public int[] calculateFinalTime (String[] strings, int minutes, int seconds) {
       for (int j = 0; j < s.length(); j++) {
          String o = "o";
          if (s.charAt(j) == o.charAt(0)) {
@@ -26,8 +26,9 @@ public class TimeCalculator {
          int[] time = new int[2];
          time[0] = minutes;
          time[1] = secondsRemaining;
+         return time;
 
       }
-      return calculateFinalTime(chars, minutes, seconds);
+      return calculateFinalTime(strings, minutes, seconds);
    }
 }
